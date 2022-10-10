@@ -1,0 +1,95 @@
+.center{
+  text-align: center;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  color: blue;
+  
+}
+
+body {
+  margin: 30px 30px 30px 30px;
+  
+}
+
+div {
+  border-width: 1px;
+  border-style: none;
+  border-color: white;
+}
+
+#header {
+  background-color: #05112b;
+  color: #fefefe;
+  width: auto;
+  height: 45px;
+  border-radius: 5px 5px 0px 0px;
+  text-align: center;
+  text-shadow: 2px 2px 4px #AAAAAA;
+}
+
+#content {
+  background: url("../images/earthmap.jpg") no-repeat;
+  background-size: cover;
+  background-color: #fefefe;
+
+  height: 512px;
+  
+}
+
+#upload {
+  width: auto;
+  height: auto;
+}
+
+#configuration {
+  float: left;
+  width: 400px;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background: transparent;
+  color: #dddddd;
+
+}
+
+#gtfs {
+  float: left;
+  width: 400px;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background: transparent;
+  color: #dddddd;
+}
+
+#logging {
+  clear: both;
+  width: auto;
+  height: 420;
+  overflow-y: scroll;
+  margin : 50px 50px 50px 50px;
+
+  background: #555555;
+  color: #dddddd;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+#footer {
+  clear: both;
+  width: auto;
+  height: 50px;
+  border-radius: 0px 0px 5px 5px;
+  margin: 0 auto;
+  background: #fefefe;
+  opacity: 0.5;
+  border-style: dashed;
+  border-color: #05112b;
+}
+
