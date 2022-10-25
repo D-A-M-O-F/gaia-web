@@ -10,20 +10,16 @@ function openWsConnection( protocol, hostname, port, endpoint ){
 
       webSocket.onopen = function(openEvent) {
           console.log("WebSocket OPEN: " + JSON.stringify(openEvent, null, 4));
-          /*
-          document.getElementById("btnSend").disabled       = false;
-          document.getElementById("btnConnect").disabled    = true;
-          document.getElementById("btnDisconnect").disabled = false;*/
+
+          document.getElementById("start-processing").disabled = true;
+
           webSocket.send("{msg_type=next_chunk}");
       };
 
       webSocket.onclose = function (closeEvent) {
           console.log("WebSocket CLOSE: " + JSON.stringify(closeEvent, null, 4));
-          /*
-          document.getElementById("btnSend").disabled       = true;
-          document.getElementById("btnConnect").disabled    = false;
-          document.getElementById("btnDisconnect").disabled = true;
-          */
+
+          document.getElementById("download-output").disabled = false;
       };
 
       webSocket.onerror = function (errorEvent) {
@@ -36,9 +32,9 @@ function openWsConnection( protocol, hostname, port, endpoint ){
           if (wsMsg.indexOf("error") > 0) {
               document.getElementById("logging").value += "error: " + wsMsg.error + "\r\n";
           } else {
-              document.getElementById("logging").innerText += wsMsg;
+              document.getElementById("logging").append( wsMsg );
               
-              //webSocket.send("{msg_type=next_chunk}");
+              webSocket.send("{msg_type=next_chunk}");
           }
       };
   } catch (exception) {
