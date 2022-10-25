@@ -16,7 +16,7 @@
             //address: Ip address,0.0.0.0 by default
             "address": "0.0.0.0",
             //port: Port number
-            "port": 80,
+            "port": 8080,
             //https: If true, use https for security,false by default
             "https": false
         }/*,
@@ -101,8 +101,8 @@
         //is the number of CPU cores
         "number_of_threads": 1,
         //enable_session: False by default
-        "enable_session": false,
-        "session_timeout": 0,
+        "enable_session": true,
+        "session_timeout": 3600,
         //string value of SameSite attribute of the Set-Cookie HTTP respone header
         //valid value is either 'Null' (default), 'Lax', 'Strict' or 'None'
         "session_same_site" : "Null",
@@ -278,7 +278,7 @@
         "br_static": true,
         //client_max_body_size: Set the maximum body size of HTTP requests received by drogon. The default value is "1M".
         //One can set it to "1024", "1k", "10M", "1G", etc. Setting it to "" means no limit.
-        "client_max_body_size": "1M",
+        "client_max_body_size": "10M",
         //max_memory_body_size: Set the maximum body size in memory of HTTP requests received by drogon. The default value is "64K" bytes.
         //If the body size of a HTTP request exceeds this limit, the body is stored to a temporary file for processing.
         //Setting it to "" means no limit.
