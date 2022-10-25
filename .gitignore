@@ -31,5 +31,12 @@
 *.out
 *.app
 
-build
-build-release
+# build directories
+build/
+build_release/
+
+# vscode
+.vscode/
+
+# Auto config.h
+include/config.h
