@@ -1,3 +1,8 @@
 [submodule "submodules/drogon"]
 	path = submodules/drogon
-	url = https://github.com/drogonframework/drogon.git
+	url = https://github.com/fe-dagostino/drogon.git
+	branch = session_events
+[submodule "submodules/tclap"]
+	path = submodules/tclap
+	url = https://git.code.sf.net/p/tclap/code
+	branch = 1.4

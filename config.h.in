@@ -1,0 +1,13 @@
+#ifndef GAIA_WEB_CONFIG_IN_H
+#define GAIA_WEB_CONFIG_IN_H
+
+#define GAIA_WEB_VERSION_MAJOR                @gaia-web_VERSION_MAJOR@
+#define GAIA_WEB_VERSION_MINOR                @gaia-web_VERSION_MINOR@
+#define GAIA_WEB_VERSION_PATCH                @gaia-web_VERSION_PATCH@
+
+#define GAIA_WEB_VERSION                      v@gaia-web_VERSION_MAJOR@_@gaia-web_VERSION_MINOR@_@gaia-web_VERSION_PATCH@
+
+#define make_string(value)                #value
+#define make_version(major,minor,patch)   make_string(major) "." make_string(minor) "." make_string(patch) 
+
+#endif // GAIA_WEB_CONFIG_IN_H

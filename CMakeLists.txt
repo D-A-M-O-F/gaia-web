@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
-project(gaia-web CXX)
+project(gaia-web
+        VERSION 0.1.0 
+        LANGUAGES CXX C)
+
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h)
 
 include(CheckIncludeFileCXX)
 
@@ -39,6 +43,12 @@ endif()
 if(NOT EXISTS "${PROJECT_SOURCE_DIR}/submodules/drogon/CMakeLists.txt")
     message(FATAL_ERROR "The submodules/drogon were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 endif()
+
+if(NOT EXISTS "${PROJECT_SOURCE_DIR}/submodules/tclap/CMakeLists.txt")
+    message(FATAL_ERROR "The submodules/tclap were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
+endif()
+
+add_subdirectory(submodules/tclap)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
