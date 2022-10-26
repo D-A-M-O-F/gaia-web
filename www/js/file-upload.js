@@ -38,12 +38,23 @@ function uploadFile( divid, element_id ) {
 
   // Handle success event
   xhr.onload = function (evt) {
+    var status = evt.target.status;
     var data = evt.target.responseText;
-    alert("File has been uploaded.\n" + data);
-    if ( enable_element !== null )
-    {
-      enable_element.disabled = false;
+    if (status === 200) {
+      //alert(data);  
+      alert("File has been uploaded.\n" + data);
+      if ( enable_element !== null )
+      {
+        enable_element.disabled = false;
+      }
     }
+    else if (status === 413) {
+      alert( "With free-version file size is limited to 10MB." );
+    }
+    else {
+      alert( "Server return code " + status );
+    }
+
   } 
 
   // Handle error event
