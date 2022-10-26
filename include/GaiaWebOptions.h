@@ -19,25 +19,20 @@ public:
   /***/
   bool                   init( int argc, const char* argv[] );
 
-  constexpr inline const std::string&   getRootPath() const noexcept
-  { return m_sRootPath; }
+  constexpr inline const std::string&   getWebRootPath() const noexcept
+  { return m_sWebRootPath; }
 
   /***/
   constexpr inline const std::string&   getConfigFilename() const noexcept
   { return m_sCfgFileName; }
-
-  /***/
-  constexpr inline bool                 isInteractiveModeEnabled() const noexcept
-  { return m_bEnableInteractiveMode; }
 
 private:
   /***/
   bool                 init_priv( int argc, const char* argv[] ) noexcept; 
 
 private:
-  std::string     m_sRootPath;
+  std::string     m_sWebRootPath;
   std::string     m_sCfgFileName;
-  bool            m_bEnableInteractiveMode;
 };
 
 

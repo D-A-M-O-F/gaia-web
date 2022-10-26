@@ -17,8 +17,7 @@ public:
 };
 
 constexpr GaiaWebOptions::GaiaWebOptions()
-  : m_sCfgFileName( "gaia.cfg" ),
-    m_bEnableInteractiveMode( false )
+  : m_sCfgFileName( "config.json" )
 {}
 
 constexpr GaiaWebOptions::~GaiaWebOptions()
@@ -58,14 +57,14 @@ bool GaiaWebOptions::init_priv( int argc, const char* argv[] ) noexcept
   _cmd.add(_configArg);
 
   ValueArg<string> _rpathArg( "r", "rpath", 
-                               "used to specify a common reference for all paths. Default value is empty [\"\"] so all paths in gaia.cfg can be both absolute or relative.", 
-                               false, "./", "string");
+                               "used to specify web root path. Default value is [\"./www\"]. Note: \"document_root\" in config.json override this value, that means that if you want parameter to be applied your configuration fille should not contain this value.", 
+                               false, "./www", "string");
   _cmd.add(_rpathArg);
 
   // Parse command line arguments
   _cmd.parse( argc, argv );
   
-  m_sRootPath              = _rpathArg.getValue();
+  m_sWebRootPath           = _rpathArg.getValue();
   m_sCfgFileName           = _configArg.getValue();
 
   return true;
