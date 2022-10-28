@@ -10,18 +10,17 @@ class HttpSessionEvents : public SessionEvents
 {
 public:
   void onSessionStart( const std::string& sessionId ) noexcept override
-  { std::cout << "CREATE " << sessionId << std::endl; 
-    create_environment(sessionId);
-  }
+  { create_environment(sessionId); }
 
   void onSessionDestroy( const std::string& sessionId ) noexcept override
-  { std::cout << "DESTROY " << sessionId << std::endl;
-    destroy_environment(sessionId); 
-  }
+  { destroy_environment(sessionId); }
 
-private:
-  void create_environment( const std::string& sessionId ) noexcept;
-  void destroy_environment( const std::string& sessionId ) noexcept;
+public:
+  static void create_environment( const std::string& sessionId ) noexcept;
+  static void clean_environment( const std::string& sessionId ) noexcept;
+  static void destroy_environment( const std::string& sessionId ) noexcept;
+
+  static void clean_directory( const std::string& path, const std::string& ext ) noexcept;
 
 
 };

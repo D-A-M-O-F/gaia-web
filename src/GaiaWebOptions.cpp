@@ -17,7 +17,9 @@ public:
 };
 
 constexpr GaiaWebOptions::GaiaWebOptions()
-  : m_sCfgFileName( "config.json" )
+  : m_sWebRootPath( "./www" ),
+    m_sWebCfgFileName( "config.json" ),
+    m_sGaiaHomePath( "./" )
 {}
 
 constexpr GaiaWebOptions::~GaiaWebOptions()
@@ -51,21 +53,33 @@ bool GaiaWebOptions::init_priv( int argc, const char* argv[] ) noexcept
   _cmd.setOutput(&_cmd_output);
 
   // Define a value argument and add it to the command line.
-  ValueArg<string> _configArg( "c", "config", 
+  ValueArg<string> _webConfigArg( "c", "config", 
                                "configuration file to be used. By default [config.json] in current directory will be used.", 
                                false, "config.json", "string");
-  _cmd.add(_configArg);
+  _cmd.add(_webConfigArg);
 
-  ValueArg<string> _rpathArg( "r", "rpath", 
+  ValueArg<string> _webRpathArg( "r", "rpath", 
                                "used to specify web root path. Default value is [\"./www\"]. Note: \"document_root\" in config.json override this value, that means that if you want parameter to be applied your configuration fille should not contain this value.", 
                                false, "./www", "string");
-  _cmd.add(_rpathArg);
+  _cmd.add(_webRpathArg);
+
+  ValueArg<string> _gaiaHomeArg( "g", "gaia_home", 
+                               "used to specify gaia home path. Default value is [\"./\"].", 
+                               false, "./", "string");
+  _cmd.add(_gaiaHomeArg);
 
   // Parse command line arguments
   _cmd.parse( argc, argv );
   
-  m_sWebRootPath           = _rpathArg.getValue();
-  m_sCfgFileName           = _configArg.getValue();
+  m_sWebRootPath           = _webRpathArg.getValue();
+    if (m_sWebRootPath.back() != '/')
+  { m_sWebRootPath.append("/"); } 
+
+  m_sWebCfgFileName        = _webConfigArg.getValue();
+
+  m_sGaiaHomePath          = _gaiaHomeArg.getValue(); 
+  if (m_sGaiaHomePath.back() != '/')
+  { m_sGaiaHomePath.append("/"); } 
 
   return true;
 }

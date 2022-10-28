@@ -147,7 +147,10 @@
             "xap",
             "apk",
             "cur",
-            "xml"
+            "xml",
+            "zip",
+            "pdf",
+            "cfg"
         ],
         // mime: A dictionary that extends the internal MIME type support. Maps extensions into new MIME types
         // note: This option only adds MIME to the sever. `file_types` above have to be set for the server to serve them.
@@ -309,5 +312,7 @@
         }
     ],
     //custom_config: custom configuration for users. This object can be get by the app().getCustomConfig() method. 
-    "custom_config": {}
+    "custom_config": {
+        "session_root_path": "/dev/shm/"
+    }
 }

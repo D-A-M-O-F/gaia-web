@@ -200,7 +200,6 @@ abbr[data-bs-original-title] {
 .div-align-bottom {
   position: fixed;
   bottom:0;
-  width:100%;
 }
 
 .div-float-left {
@@ -220,22 +219,21 @@ abbr[data-bs-original-title] {
   width: 50%;
 }
 
-
 .div-logging {
-  padding: 5px 10px;
+  padding: 10px 10px 10px 10px;
+  
   border-radius: 5px;
   width: 100% !important;
   background-color: #efefef;
-  height: 400;
+  height: 300px;
 }
 
 #logging {
-  white-space: pre;
   font-family: monospace;
 }
 
 #logging:before {
-  content: "processing GTFS:";
+  content: "Processing GTFS:";
   font-style: italic;
   color: #555;
 }
@@ -401,8 +399,9 @@ abbr[data-bs-original-title] {
 }
 
 .copyright {
-  /*background-color: #1a252f;*/
+  width: 100% !important; 
 }
+
 
 .tooltip {
   position: relative;

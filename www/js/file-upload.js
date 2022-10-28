@@ -41,8 +41,7 @@ function uploadFile( divid, element_id ) {
     var status = evt.target.status;
     var data = evt.target.responseText;
     if (status === 200) {
-      //alert(data);  
-      alert("File has been uploaded.\n" + data);
+      //alert("File has been uploaded.\n" + data);
       if ( enable_element !== null )
       {
         enable_element.disabled = false;
