@@ -18,13 +18,13 @@ void HttpSessionEvents::create_environment( const std::string& sessionId ) noexc
   std::filesystem::create_directory( _session_root / GTFS_INPUT  );
   std::filesystem::create_directory( _session_root / GTFS_OUTPUT );
   std::filesystem::create_directory( _session_root / GTFS_LOG    );
-  std::filesystem::create_directory( _session_root / GTFS_CFG    );
-  std::filesystem::create_directory( _session_root / GTFS_RCFG   );
+  std::filesystem::create_directory( _session_root / GAIA_CFG    );
+  std::filesystem::create_directory( _session_root / GAIA_RCFG   );
 
   std::error_code ec( 0, std::system_category() );
 
-  if ( std::filesystem::copy_file( GaiaWebOptions::getInstance().getGaiaHomePath() + GTFS_RCFG + "/gaia.cfg", 
-                                    _session_root / GTFS_RCFG / "gaia.cfg",
+  if ( std::filesystem::copy_file( GaiaWebOptions::getInstance().getGaiaHomePath() + GAIA_RCFG + "/gaia.cfg", 
+                                    _session_root / GAIA_RCFG / "gaia.cfg",
                                     std::filesystem::copy_options::overwrite_existing,
                                     ec
                                   ) == false )
@@ -34,8 +34,8 @@ void HttpSessionEvents::create_environment( const std::string& sessionId ) noexc
   }
 
   ec.clear();
-  if ( std::filesystem::copy_file( GaiaWebOptions::getInstance().getGaiaHomePath() + GTFS_CFG + "/gtfs.cfg"  , 
-                                    _session_root / GTFS_CFG / "gtfs.cfg",
+  if ( std::filesystem::copy_file( GaiaWebOptions::getInstance().getGaiaHomePath() + GAIA_CFG + "/gtfs.cfg"  , 
+                                    _session_root / GAIA_CFG / "gtfs.cfg",
                                     std::filesystem::copy_options::overwrite_existing,
                                     ec
                                   ) == false )
