@@ -96,6 +96,8 @@ void WebSocketLogger::handleNewMessage(const WebSocketConnectionPtr& wsConnPtr, 
       }
       else
       {
+        LOG_DEBUG << "END PROCESSING:" << status.session_id;
+        
         send( wsConnPtr, "1.0", "end", 
               WWW_PROCESSING"/" + status.session_id + "/output.zip" 
             );
@@ -132,18 +134,16 @@ void WebSocketLogger::send( const WebSocketConnectionPtr& wsConnPtr,
 
   const std::string out_data = Json::writeString(builder, out_json);
 
-  std::cout << "WS OUT: " << out_data << std::endl;  
-
   wsConnPtr->send( out_data, drogon::WebSocketMessageType::Text );
 }
 
 int WebSocketLogger::processing( const std::string& sessionid )
 {
-  std::string command = GaiaWebOptions::getInstance().getGaiaHomePath() + 
-                        "scripts/processing.sh " + sessionid
-                        + " " + GaiaWebOptions::getInstance().getGaiaHomePath();
+  std::string command = GaiaWebOptions::getInstance().getGaiaHomePath() + GAIA_SCRIPTS +
+                        "/processing.sh " + sessionid + " " +
+                        GaiaWebOptions::getInstance().getGaiaHomePath() + GAIA_BIN + "/";
 
-  LOG_DEBUG << "PROCESSING:" << command;
+  LOG_DEBUG << "START PROCESSING:" << command;
 
   return system( command.c_str() );
 }
@@ -173,8 +173,6 @@ std::string WebSocketLogger::load_log( session_status_t& status )
 
   if ( status.logfile.is_open() == true )
   {
-    std::cout << "status = " << status.is_ready() << " eof = " << status.logfile.eof() << std::endl;
-
     status.bufdata = status.logfile.readsome( status.buffer, sizeof(status.buffer) );
     if ( status.is_ready() && (status.bufdata == 0) )
     {
