@@ -7,7 +7,9 @@ int main( [[maybe_unused]] int argc, [[maybe_unused]] const char* argv[] ) {
   // Initialize command line options
   GaiaWebOptions::getInstance().init( argc, argv );
 
-  drogon::app().setSessionEventsHandler( std::make_unique<HttpSessionEvents>() );
+  drogon::app().registerSessionStartAdvice ( &HttpSessionEvents::onSessionStart );
+  drogon::app().registerSessionDestroyAdvice( &HttpSessionEvents::onSessionDestroy );
+
   drogon::app().setDocumentRoot( GaiaWebOptions::getInstance().getWebRootPath() );
 
   //Load config file

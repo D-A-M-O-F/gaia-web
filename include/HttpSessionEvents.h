@@ -1,18 +1,14 @@
 #pragma once
 
-#include <drogon/SessionEvents.h>
 #include <iostream>
 
-using namespace drogon;
-
-
-class HttpSessionEvents : public SessionEvents
+class HttpSessionEvents 
 {
 public:
-  void onSessionStart( const std::string& sessionId ) noexcept override
+  static void onSessionStart( const std::string& sessionId ) noexcept
   { create_environment(sessionId); }
 
-  void onSessionDestroy( const std::string& sessionId ) noexcept override
+  static void onSessionDestroy( const std::string& sessionId ) noexcept
   { destroy_environment(sessionId); }
 
 public:
@@ -21,7 +17,6 @@ public:
   static void destroy_environment( const std::string& sessionId ) noexcept;
 
   static void clean_directory( const std::string& path, const std::string& ext ) noexcept;
-
 
 };
 
