@@ -45,6 +45,7 @@ private:
   static void send( const WebSocketConnectionPtr& wsConnPtr,
                             const std::string& version,
                             const std::string& command,
+                            const std::string& status,
                             const std::string& payload
                           );
   static int  processing( const std::string& sessionid ); 

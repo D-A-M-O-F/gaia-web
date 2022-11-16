@@ -1,93 +1,193 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G.A.I.A.</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="font-awesome/6.2.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="font-awesome/6.2.0/css/brands.min.css">
+    <link rel="stylesheet" href="font-awesome/6.2.0/css/solid.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="js/bulma.js" ></script>
     <script type="text/javascript" src="js/file-upload.js" ></script>
     <script type="text/javascript" src="js/websocket.js" ></script>
     <script type="text/javascript" src="js/cookies.js" ></script>
+   
   </head>
   <body>
-    <!-- Navigation-->    
-    <nav class="navbar bg-secondary text-uppercase" id="mainNav">
-      <div class="container" style="height: 30px;">
-        <!--a class="navbar-brand" href="#page-top">DAMOF</a-->
-      </div>
-    </nav> <!-- END Navigation-->
+    <nav class="navbar bg-primary fg-primary custom-font0-2" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="http://www.damof.org">
+          <img src="assets/gaia-logo.png" >
+        </a>
     
-    <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
-      <div class="container d-flex align-items-center flex-column">
-        <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase text-shadow mb-0">G.A.I.A.</h1>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-line"></div>
-        </div>
-        <!-- Masthead Subheading-->
-        <p class="masthead-subheading text-shadow mb-0">GTFS Accurate Insight Analyser</p>
+        <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-    </header>
-
-    <div class="container">
-      <div class="" id="upload">
-        <div class="div-align-center-23 div-margin-top bg-tertiary div-shadow div-border div-rounded-border" id="configuration">
-          <div class="tooltip text-center">Upload your configuration <i class="fa fa-info-circle"></i>
-            <span class="tooltip-text">Select your customized <b>gtfs.cfg</b> file or let it blank if you want to use the default configuration file.</span>
-          </div>
-          <form>
-            <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
-            <span id="percentage">---</span><span id="time"></span>
-            <br /><br />
-            <input type="file" id="file" name="myfile" accept=".cfg" />
-            <input type="button" onclick="uploadFile( 'configuration' )" value="Upload" />
-            <input type="button" onclick="cancelUploadFile( 'configuration' )" value="Cancel" />
-            <div class="div-float-right">
-              <i>get default<a href="/downloads/gtfs.cfg" download> gtfs.cfg</a> and <a href="/downloads/en_user_manual.pdf" download> documentation</a></i>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+  
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link bg-primary fg-primary custom-font0-1">
+              More
+            </a>
+    
+            <div class="navbar-dropdown is-right bg-primary fg-primary">
+              <a class="navbar-item fg-primary custom-font0-1">
+                About
+              </a>
+              <a class="navbar-item fg-primary custom-font0-1" href="mailto:info@damof.org">
+                Contact
+              </a>
+              <hr class="navbar-divider ">
+              <a class="navbar-item fg-primary custom-font0-1" href="mailto:info@damof.org">
+                Report an issue
+              </a>
             </div>
-          </form>
+          </div>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <section class="section bg-white" style="height: calc(100hv);">
+      <div class="box bg-secondary fg-secondary custom-font0-1" style="text-align: justify;">
+        <i>
+        <p><b>G.A.I.A.</b> is a GTFS analyser, the first one in its gender, to introduce the concept of filters, allowing users to define their own validation rules to matching with application needs.</p>
+        <p>Filters can be concatenated so that the user can create a unique pipeline of validation rules for each single GTFS field, moreover filters can also modify original data helping to fix some common mistakes and then to normalize data itself.</p>
+        </i>
+      </div>
+
+      <div class="container box bg-secondary">
+
+        <div class="box bg-tertiary" id="configuration">
+          <progress id="progressBar" class="progress is-small" style="margin-bottom: var(--default-margin);" value="0" max="100" ></progress>
+          <div class="file has-name is-normal is-dark is-fullwidth">
+            <label class="file-label">
+              
+              <input class="file-input" type="file" id="file" name="myfile" accept=".cfg">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </span>
+                <span class="file-label">
+                  Select your .cfg file…
+                </span>
+              </span>
+              <span class="file-name bg-white"  >
+                gtfs.cfg
+              </span>
+            </label>
+          </div>
+          <input class="button is-small is-dark top-margin right-margin" type="button" onclick="uploadFile( 'configuration' )" value="Upload" />
+          <input class="button is-small is-dark top-margin left-margin " type="button" onclick="cancelUploadFile( 'configuration' )" value="Cancel" />
+          <div class="block" style="float: right;" >
+
+            <div class="tooltip right-margin" style="float: left;">
+              <a href="/downloads/gtfs.cfg">
+                <i class="fa-solid fa-toolbox fa-lg" style="margin-top: calc( var(--default-margin) + var(--icon-offset) );"></i>
+              </a>
+              <span class="tooltip-text">Download the default <i>gtfs.cfg</i>, since modifying it can be the fastest way to produce your own configuration.</span>
+            </div>
+
+            <div class="tooltip left-margin right-margin" style="float: left;">
+              <a href="/downloads/en_user_manual.pdf">
+                <i class="fa-solid fa-file-pdf fa-lg" style="margin-top: calc( var(--default-margin) + var(--icon-offset) );"></i>
+              </a>
+              <span class="tooltip-text">Download G.A.I.A. User Manual. It contains details related to <i>gtfs.cfg</i> and allow you to customize your configuration accordingly with <b>your</b> application needs.</span>
+            </div>
+
+            <div class="tooltip left-margin" style="float: right;">
+              <i class="fa-solid fa-circle-info fa-lg" style="margin-top: calc( var(--default-margin) + var(--icon-offset) );"></i>
+              <span class="tooltip-text">Select your customized <b>gtfs.cfg</b> file or let it blank if you want to use a default configuration file.</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="box bg-tertiary" id="gtfs">
+          <progress id="progressBar" class="progress is-small" style="margin-bottom: var(--default-margin);" value="0" max="100" ></progress>
+          <div class="file has-name is-normal is-dark is-fullwidth" >
+            <label class="file-label">
+              <input class="file-input" type="file" id="file" name="myfile" accept=".zip">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </span>
+                <span class="file-label">
+                  Select your GTFS set…
+                </span>
+              </span>
+              <span class="file-name bg-white">
+                ...
+              </span>
+            </label>
+          </div>
+          <input class="button is-small is-dark top-margin right-margin" type="button" onclick="uploadFile( 'gtfs', 'start-processing' )" value="Upload" />
+          <input class="button is-small is-dark top-margin left-margin " type="button" onclick="cancelUploadFile( 'gtfs' )" value="Cancel" />
+          
+          <div class="block" style="float: right;" >
+
+            <div class="tooltip right-margin" style="float: left;">
+              <a href="https://gtfs.org/schedule/reference/">
+                <i class="fa-solid fa-link fa-lg" style="margin-top: calc( var(--default-margin) + var(--icon-offset) );"></i>
+              </a>
+              <span class="tooltip-text">Reference to <i>http://gtfs.org</i> with full specifications related to GTFS standard.</span>
+            </div>
+
+            <div class="tooltip left-margin" style="float: right;">
+              <i class="fa-solid fa-circle-info fa-lg" style="margin-top: calc( var(--default-margin) + var(--icon-offset) );"></i>
+              <span class="tooltip-text">Select your GTFS set. It is expected a <b>.zip</b> file without any folder inside. Maximum size for the free version is <b>5 MB</b>.</span>
+            </div>
+
+          </div>
           
         </div>
-        <div class="div-align-center-23 div-margin-top bg-tertiary div-shadow div-border div-rounded-border" id="gtfs">
-          <form>
-            <div class="tooltip text-center">Upload your GTFS files <i class="fa fa-info-circle"></i>
-              <span class="tooltip-text">Select your GTFS files. It is expected a <b>.zip</b> file without any folder inside. Maximum size for the free version is <b>5 MB</b>.</span>
-            </div>
 
-            <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
-            <span id="percentage">---</span><span id="time"></span>
-            <br /><br />
-            <input type="file" id="file" name="myfile" accept=".zip" />
-            <input type="button" onclick="uploadFile( 'gtfs', 'start-processing' )" value="Upload" />
-            <input type="button" onclick="cancelUploadFile( 'gtfs' )" value="Cancel" />
-            <div class="div-float-right">
-              <i><a href="https://gtfs.org/schedule/reference/"> https://gtfs.org</a></i>
-            </div>
-          </form>
+        <div class="block bg-tertiary rounded-borders padding" box-background-color="#ff00ff" >
+          <input class="button is-small is-dark right-margin" id="start-processing" type="button"  disabled="true" onclick="openWsConnection( 'ws', window.location.hostname, window.location.port, '/output' )" value="Start Processing ..." />
+          <input class="button is-small is-dark left-margin " id="download-output"  type="button"  disabled="true" onclick="" value="Download Output" />
         </div>
-        <div class="div-align-center-half div-margin-bottom"  id="processing">
-          <input id="start-processing" type="button" class="div-shadow div-rounded-border" style="width: 200px;" disabled="true" onclick="openWsConnection( 'ws', window.location.hostname, window.location.port, '/output' )" value="Start Processing ..." />
-          <input id="download-output"  type="button" class="div-shadow div-rounded-border" style="width: 200px;" disabled="true" onclick="" value="Download Output" />
+
+      </div>
+
+      <div class="block rounded-borders padding bg-secondary"  >
+        <textarea class="textarea is-small bg-tertiary fg-tertiary padding solid-border"
+                  style="min-height: 170px; border-radius: var(--default-border-radius); box-sizing: border-box;" 
+                  readonly id="logging">>_</textarea>
+      </div> 
+
+    </section>
+
+    <!--   footer starts from here  -->
+    <footer class="gaia-footer bg-primary fg-primary custom-font0-2">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <p>Copyright <i class="fa-regular fa-copyright"></i> 2022 D.A.M.O.F.</p>
+          </div>
+          <div class="column has-text-right">
+            <a href="mailto:info@damof.org"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://damof.slack.com/"><i class="fa-brands fa-slack"></i></a>
+            <a href="https://github.com/D-A-M-O-F"><i class="fa-brands fa-github"></i></a>
+          </div>
         </div>
       </div>
-      <div class="div-align-center-45 div-margin-top div-logging div-shadow div-scrollable" id="logging"/>
-    </div>
-
-    <!-- Copyright Section-->
-    <div class="copyright div-align-bottom bg-secondary text-center text-white">
-      <div class="container"><small>Copyright &copy; <b>DAMOF.org</b> 2022</small></div>
-    </div>       
-
+    </footer>
   </body>
 </html>
+

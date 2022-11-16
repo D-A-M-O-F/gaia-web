@@ -58,17 +58,26 @@ function openWsConnection( protocol, hostname, port, endpoint ){
       }
 
       if ( wsMsg.c === "begin" ){
+
+        document.getElementById("logging").innerHTML = "";
         
         sendMessage("next");
         
       } else if ( wsMsg.c === "data" ){
         
         document.getElementById("logging").append( wsMsg.p );
+        document.getElementById('logging').scrollTop = document.getElementById('logging').scrollHeight;
           
         sendMessage("next");
       } else if ( wsMsg.c === "end" ){
         
         document.getElementById("download-output").addEventListener("click", function(){ location.href = wsMsg.p; } );
+
+        if ( wsMsg.s !== "ok" )
+        {
+          document.getElementById("logging").append( "\n\n----------\nAn ERROR occurred.\nDownload output for details.\n----------" );
+          document.getElementById('logging').scrollTop = document.getElementById('logging').scrollHeight;
+        }
         
         webSocket.close();
       }

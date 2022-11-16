@@ -48,7 +48,7 @@ function uploadFile( divid, element_id ) {
       }
     }
     else if (status === 413) {
-      alert( "With free-version file size is limited to 10MB." );
+      alert( "With free-version file size is limited to 5MB." );
     }
     else {
       alert( "Server return code " + status );

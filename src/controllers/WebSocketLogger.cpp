@@ -11,13 +11,17 @@ PROTOCOL
 "v" version 
     accepted value "1.0" 
 "c" command
-    "data"    raw text data in "p"
-    "begin"   statin processing
-    "next"    requesting next buffer/command
-    "end"     namefile to download in "p"
+    "data"     raw text data in "p"
+    "begin"    start processing
+    "next"     requesting next buffer/command
+    "end"      namefile to download in "p"
+
+"s" status
+    "ok"      
+    "<error>"  error code  
 
 "p" payload
-    arbitrary amount of data
+    arbitrary  amount of data
 
 */
 
@@ -49,7 +53,7 @@ void WebSocketLogger::handleNewConnection(const HttpRequestPtr &req, const WebSo
 
   wsConnPtr->setContext( m_mapSessions[idSession] );
 
-  send( wsConnPtr, "1.0", "begin", idSession );
+  send( wsConnPtr, "1.0", "begin", "ok", idSession );
 }
 
 
@@ -86,19 +90,26 @@ void WebSocketLogger::handleNewMessage(const WebSocketConnectionPtr& wsConnPtr, 
     if ( in_json["c"].asString() == "next" )
     {
       session_status_t& status = wsConnPtr->getContextRef<session_status_t>();
+
       if ( ( status.is_ready() == false ) || (status.logfile.is_open()==true) )
       {
         const std::string payload = load_log( status );
 
-        send( wsConnPtr, "1.0", "data", 
+        send( wsConnPtr, "1.0", "data", "ok",
               payload
             );
       }
       else
       {
+        std::string retVal = "ok";
+        if ( status.result.get() != 0 )
+        {
+          retVal = std::to_string( status.result.get() );
+        }
+
         LOG_DEBUG << "END PROCESSING:" << status.session_id;
-        
-        send( wsConnPtr, "1.0", "end", 
+
+        send( wsConnPtr, "1.0", "end", retVal,
               WWW_PROCESSING"/" + status.session_id + "/output.zip" 
             );
       }
@@ -122,6 +133,7 @@ void WebSocketLogger::handleConnectionClosed(const WebSocketConnectionPtr& wsCon
 void WebSocketLogger::send( const WebSocketConnectionPtr& wsConnPtr,
                             const std::string& version,
                             const std::string& command,
+                            const std::string& status,
                             const std::string& payload
                           )
 {
@@ -130,6 +142,7 @@ void WebSocketLogger::send( const WebSocketConnectionPtr& wsConnPtr,
 
   out_json["v"] = version;;
   out_json["c"] = command;
+  out_json["s"] = status;
   out_json["p"] = payload;
 
   const std::string out_data = Json::writeString(builder, out_json);
