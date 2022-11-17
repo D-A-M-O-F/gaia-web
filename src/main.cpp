@@ -12,6 +12,10 @@ int main( [[maybe_unused]] int argc, [[maybe_unused]] const char* argv[] ) {
 
   drogon::app().setDocumentRoot( GaiaWebOptions::getInstance().getWebRootPath() );
 
+  drogon::app().setCustom404Page( 
+                                  drogon::HttpResponse::newFileResponse( drogon::app().getDocumentRoot() + "404.html" ) 
+                                );
+
   //Load config file
   drogon::app().loadConfigFile( GaiaWebOptions::getInstance().getWebConfigFilename() );
   

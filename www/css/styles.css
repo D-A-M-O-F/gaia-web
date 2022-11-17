@@ -108,8 +108,16 @@ body {
   margin-right: var(--default-margin);
 }
 
-.padding {
+.padding .padding-1x {
   padding: var(--default-padding);
+}
+
+.padding-2x {
+  padding: calc( var(--default-padding) * 2 );
+}
+
+.padding-3x {
+  padding: calc( var(--default-padding) * 3 );
 }
 
 .rounded-borders {
@@ -140,6 +148,24 @@ body {
   font-family: 'Dosis', sans-serif;
   font-weight: 600;
   font-size: 1.2rem;        
+}
+
+.custom-font0-4 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;        
+}
+
+.custom-font0-5 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 800;
+  font-size: 2.0rem;        
+}
+
+.custom-font0-10 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 800;
+  font-size: 3.0rem;        
 }
 
 .tooltip {
