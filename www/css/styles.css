@@ -108,7 +108,7 @@ body {
   margin-right: var(--default-margin);
 }
 
-.padding .padding-1x {
+.padding, .padding-1x {
   padding: var(--default-padding);
 }
 
