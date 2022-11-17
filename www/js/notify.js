@@ -95,11 +95,13 @@ window.notificationService = (function () {
 			if (config.showRemoveButton) {
 				// Add remove icon in notification popup
 				let closeEleDiv = document.createElement('div');
-				closeEleDiv.className = "text-panel";
+				closeEleDiv.className = "icon-panel";
 				let closeEle = document.createElement('i');
-				closeEle.className = 'remove-icon';
+				//closeEle.className = 'remove-icon';
+				closeEle.className = 'remove-icon fa-solid fa-circle-xmark fa-lg'
 				closeEle.id = `remove-${ notificationCount }`;
-				closeEle.innerHTML = '&#x2715';
+				//closeEle.innerHTML = '&#x2715';
+				//closeEle.innerHTML = "<i class='fa-solid fa-circle-xmark fa-lg'></i>"
 				closeEle.addEventListener('click', handleRemoveIconClick);
 				closeEleDiv.appendChild(closeEle);
 				titleRow.appendChild(closeEleDiv);
