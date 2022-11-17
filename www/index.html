@@ -12,12 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="css/notify.css">
     <link rel="stylesheet" href="font-awesome/6.2.0/css/fontawesome.min.css">
     <link rel="stylesheet" href="font-awesome/6.2.0/css/brands.min.css">
     <link rel="stylesheet" href="font-awesome/6.2.0/css/solid.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <script type="text/javascript" src="js/bulma.js" ></script>
+    <script type="text/javascript" src="js/notify.js" ></script>
     <script type="text/javascript" src="js/file-upload.js" ></script>
     <script type="text/javascript" src="js/websocket.js" ></script>
     <script type="text/javascript" src="js/cookies.js" ></script>
@@ -65,6 +67,7 @@
     </nav>
 
     <section class="section bg-white" style="height: calc(100hv);">
+
       <div class="box bg-secondary fg-secondary custom-font0-1" style="text-align: justify;">
         <i>
         <p><b>G.A.I.A.</b> is a GTFS analyser, the first one in its gender, to introduce the concept of filters, allowing users to define their own validation rules to matching with application needs.</p>
@@ -158,7 +161,7 @@
           
         </div>
 
-        <div class="block bg-tertiary rounded-borders padding" box-background-color="#ff00ff" >
+        <div class="block bg-tertiary rounded-borders padding-1x">
           <input class="button is-small is-dark right-margin" id="start-processing" type="button"  disabled="true" onclick="openWsConnection( 'ws', window.location.hostname, window.location.port, '/output' )" value="Start Processing ..." />
           <input class="button is-small is-dark left-margin " id="download-output"  type="button"  disabled="true" onclick="" value="Download Output" />
         </div>

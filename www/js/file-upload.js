@@ -19,7 +19,8 @@ function uploadFile( divid, element_id ) {
   var fileObj = file_element.files[0]; // js get file object
   if ( fileObj === null || fileObj === undefined )
   {
-    alert("Error: No file selected.");
+    //alert("Error: No file selected.");
+    notifyError( "No file selected.", true );
     return;    
   }
 
@@ -48,17 +49,20 @@ function uploadFile( divid, element_id ) {
       }
     }
     else if (status === 413) {
-      alert( "With free-version file size is limited to 5MB." );
+      //alert( "With free-version file size is limited to 5MB." );
+      notifyWarning( "With free-version file size is limited to 5MB.", true );
     }
     else {
-      alert( "Server return code " + status );
+      //alert( "Server return code " + status );
+      notifyError( "Server return code " + status, true );
     }
 
   } 
 
   // Handle error event
   xhr.onerror = function (evt) {
-    alert("Upload failed!");
+    //alert("Upload failed!");
+    notifyError( "Upload failed!.", true );
   }
 
   // Handle progress bar event
