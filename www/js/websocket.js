@@ -1,5 +1,8 @@
 
 var webSocket = null;
+var bytesTotal = 0;
+var bytesCount = 0;
+var bytesLimit = 100000;
 
 function parseMessage( msg ){
   try {
@@ -59,12 +62,23 @@ function openWsConnection( protocol, hostname, port, endpoint ){
 
       if ( wsMsg.c === "begin" ){
 
+        bytesCount = 0;
+        bytesTotal = 0;
         document.getElementById("logging").innerHTML = "";
         
         sendMessage("next");
         
       } else if ( wsMsg.c === "data" ){
-        
+
+        if ( bytesCount > bytesLimit )
+        {
+          bytesCount = 0;
+          document.getElementById("logging").innerHTML = "";
+        }
+
+        bytesCount += wsMsg.p.length;
+        bytesTotal += wsMsg.p.length;
+
         document.getElementById("logging").append( wsMsg.p );
         document.getElementById('logging').scrollTop = document.getElementById('logging').scrollHeight;
           
