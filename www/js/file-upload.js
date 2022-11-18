@@ -1,4 +1,13 @@
 
+
+function updateFileName(files,elementId)
+{
+  if (files.length > 0) {
+    var fileName = document.getElementById( elementId );
+    fileName.textContent = files[0].name;
+  }
+}
+
 function getElementInsideContainer(containerID, childID) {
     var elm = {};
     var elms = document.getElementById(containerID).getElementsByTagName("*");

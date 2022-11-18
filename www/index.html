@@ -48,7 +48,7 @@
             </a>
     
             <div class="navbar-dropdown is-right bg-primary fg-primary">
-              <a class="navbar-item fg-primary custom-font0-1">
+              <a class="navbar-item fg-primary custom-font0-1" href="/about.html">
                 About
               </a>
               <a class="navbar-item fg-primary custom-font0-1" href="mailto:info@damof.org">
@@ -82,7 +82,7 @@
           <div class="file has-name is-normal is-dark is-fullwidth">
             <label class="file-label">
               
-              <input class="file-input" type="file" id="file" name="myfile" accept=".cfg">
+              <input class="file-input" type="file" id="file" name="cfgFile" accept=".cfg" onchange="updateFileName(this.files,'cfgFileName')">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -91,9 +91,7 @@
                   Select your .cfg file…
                 </span>
               </span>
-              <span class="file-name bg-white"  >
-                gtfs.cfg
-              </span>
+              <span class="file-name bg-white" id="cfgFileName">gtfs.cfg</span>
             </label>
           </div>
           <input class="button is-small is-dark top-margin right-margin" type="button" onclick="uploadFile( 'configuration' )" value="Upload" />
@@ -126,7 +124,7 @@
           <progress id="progressBar" class="progress is-small" style="margin-bottom: var(--default-margin);" value="0" max="100" ></progress>
           <div class="file has-name is-normal is-dark is-fullwidth" >
             <label class="file-label">
-              <input class="file-input" type="file" id="file" name="myfile" accept=".zip">
+              <input class="file-input" type="file" id="file" name="gtfsFile" accept=".zip" onchange="updateFileName(this.files,'gtfsFileName')">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -135,9 +133,7 @@
                   Select your GTFS set…
                 </span>
               </span>
-              <span class="file-name bg-white">
-                ...
-              </span>
+              <span class="file-name bg-white" id="gtfsFileName">...</span>
             </label>
           </div>
           <input class="button is-small is-dark top-margin right-margin" type="button" onclick="uploadFile( 'gtfs', 'start-processing' )" value="Upload" />
