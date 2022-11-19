@@ -42,12 +42,12 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install ninja-build cmake 
-        sudo apt-get install gcc-11 
-        sudo apt-get install g++-11
+        sudo apt-get install gcc-12 
+        sudo apt-get install g++-12
         sudo apt-get install cppcheck
         sudo apt-get install libjsoncpp-dev
-        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
-        sudo update-alternatives --set gcc /usr/bin/gcc-11
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 --slave /usr/bin/g++ g++ /usr/bin/g++-12 --slave /usr/bin/gcov gcov /usr/bin/gcov-12
+        sudo update-alternatives --set gcc /usr/bin/gcc-12
         ninja --version
         cmake --version
         gcc --version
