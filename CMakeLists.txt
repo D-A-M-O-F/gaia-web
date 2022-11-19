@@ -54,6 +54,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include/views
     ${CMAKE_CURRENT_SOURCE_DIR}/include/controllers
+    ${CMAKE_CURRENT_SOURCE_DIR}/submodules/tclap/include/
 )
 
 add_executable(${PROJECT_NAME} src/main.cpp)
