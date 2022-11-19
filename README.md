@@ -9,6 +9,15 @@ In order to download and build the project you will need the following tools
 - cmake
 - make
 
+Moreover you will need the following libraries:
+
+* BUILD TIME
+  - libjsoncpp25
+
+* RUN TIME
+  - libjsoncpp-dev
+
+
 With the above pre-requisite then proceed with the following:
 
 ```bash
