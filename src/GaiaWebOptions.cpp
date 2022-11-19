@@ -16,13 +16,13 @@ public:
     }
 };
 
-constexpr GaiaWebOptions::GaiaWebOptions()
+GaiaWebOptions::GaiaWebOptions()
   : m_sWebRootPath( "./www" ),
     m_sWebCfgFileName( "config.json" ),
     m_sGaiaHomePath( "./" )
 {}
 
-constexpr GaiaWebOptions::~GaiaWebOptions()
+GaiaWebOptions::~GaiaWebOptions()
 {}
 
 GaiaWebOptions& GaiaWebOptions::getInstance()

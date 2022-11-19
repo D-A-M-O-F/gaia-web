@@ -9,9 +9,9 @@ class GaiaWebOptions
 {
 private:
   /***/
-  constexpr GaiaWebOptions();
+  GaiaWebOptions();
   /***/
-  constexpr ~GaiaWebOptions();
+  ~GaiaWebOptions();
 
 public:
   /***/
