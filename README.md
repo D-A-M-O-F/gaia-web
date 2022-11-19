@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Language](https://img.shields.io/badge/language-c++-red.svg)](https://en.cppreference.com/)
+[![CMake](https://github.com/D-A-M-O-F/gaia-web/actions/workflows/cmake.yml/badge.svg?branch=master)](https://github.com/D-A-M-O-F/gaia-web/actions/workflows/cmake.yml)
 # gaia-web
 
 ## How to build and run
