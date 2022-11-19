@@ -41,11 +41,15 @@ jobs:
       if: startsWith( matrix.config.name, 'Ubuntu_Latest_GCC') 
       run: |
         sudo apt-get update
+        sudo apt-get install zip unzip
+        sudo apt-get install libcurl4
         sudo apt-get install ninja-build cmake 
         sudo apt-get install gcc-11 
         sudo apt-get install g++-11
         sudo apt-get install cppcheck
         sudo apt-get install libjsoncpp-dev
+        sudo apt-get install libsqlite3-dev
+        sudo apt-get install libhiredis-dev
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
         sudo update-alternatives --set gcc /usr/bin/gcc-11
         ninja --version

@@ -13,9 +13,16 @@ Moreover you will need the following libraries:
 
 * BUILD TIME
   - libjsoncpp25
+  - libsqlite3-dev  (optional)
+  - libhiredis-dev  (optional) 
 
 * RUN TIME
+  - zip
+  - unzip
+  - libcurl4
   - libjsoncpp-dev
+  - libsqlite3-0    (optional)
+  - libhiredis0.14  (optional) 
 
 
 With the above pre-requisite then proceed with the following:
