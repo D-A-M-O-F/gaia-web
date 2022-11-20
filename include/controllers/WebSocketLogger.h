@@ -24,7 +24,7 @@ private:
   using session_id_t = std::string;
   struct session_status_t {
     session_status_t()
-      : served(false), bufdata(0)
+      : live(true), served(false), bufdata(0)
     {}
 
     bool is_ready() const
@@ -33,6 +33,7 @@ private:
     session_id_t      session_id;
     std::future<int>  result;
 
+    bool              live;           // Live log enabled
     bool              served;
     char              buffer[1024];   // Buffer used to store log information
     std::streamsize   bufdata;        // Valid buffer data

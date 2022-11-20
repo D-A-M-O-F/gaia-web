@@ -13,11 +13,13 @@ PROTOCOL
 "c" command
     "data"     raw text data in "p"
     "begin"    start processing
+    "abegin"   acknowledge start processing 'live' status in "p"
     "next"     requesting next buffer/command
     "end"      namefile to download in "p"
 
 "s" status
-    "ok"      
+    "ok"
+    "busy"     still running 
     "<error>"  error code  
 
 "p" payload
@@ -87,15 +89,25 @@ void WebSocketLogger::handleNewMessage(const WebSocketConnectionPtr& wsConnPtr, 
       return;
     }
 
-    if ( in_json["c"].asString() == "next" )
+    if ( in_json["c"].asString() == "abegin" )
+    {
+      session_status_t& status = wsConnPtr->getContextRef<session_status_t>();
+      status.live = in_json["p"].asBool();
+    }
+
+    if ( 
+          ( in_json["c"].asString() == "abegin" ) || 
+          ( in_json["c"].asString() == "next"   )
+       )
     {
       session_status_t& status = wsConnPtr->getContextRef<session_status_t>();
 
       if ( ( status.is_ready() == false ) || (status.logfile.is_open()==true) )
       {
-        const std::string payload = load_log( status );
+        const std::string payload = (status.live==true)?load_log( status ):"";
 
-        send( wsConnPtr, "1.0", "data", "ok",
+        send( wsConnPtr, "1.0", "data", 
+              (status.live==true)?"ok":"busy",
               payload
             );
       }

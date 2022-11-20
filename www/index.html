@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="bulma/0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="css/notify.css">
+    <link rel="stylesheet" href="css/toggle.css">
     <link rel="stylesheet" href="font-awesome/6.2.0/css/fontawesome.min.css">
     <link rel="stylesheet" href="font-awesome/6.2.0/css/brands.min.css">
     <link rel="stylesheet" href="font-awesome/6.2.0/css/solid.min.css">
@@ -157,8 +158,15 @@
         </div>
 
         <div class="block bg-tertiary rounded-borders padding-1x">
-          <input class="button is-small is-dark right-margin" id="start-processing" type="button"  disabled="true" onclick="openWsConnection( 'ws', window.location.hostname, window.location.port, '/output' )" value="Start Processing ..." />
+          <input class="button is-small is-dark right-margin" id="start-processing" type="button"  disabled="true" onclick="openWsConnection( 'ws', window.location.hostname, window.location.port, '/output');" value="Start Processing" />
           <input class="button is-small is-dark left-margin " id="download-output"  type="button"  disabled="true" onclick="" value="Download Output" />
+          <label class="toggle">
+            <input class="toggle-checkbox" type="checkbox" id="logStreamEnabled" checked>
+            <div class="toggle-switch tooltip">
+              <span class="tooltip-text"><b>Enable</b>/<b>Disable</b> live log.<br><b>Note</b>: significantly impacts waiting time.</span>
+            </div>
+            <span class="toggle-label"></span>
+          </label>
         </div>
 
       </div>
