@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G.A.I.A.</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="css/notify.css">
+    <link rel="stylesheet" href="font-awesome/6.2.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="font-awesome/6.2.0/css/brands.min.css">
+    <link rel="stylesheet" href="font-awesome/6.2.0/css/solid.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type="text/javascript" src="js/bulma.js" ></script>
+    <script type="text/javascript" src="js/notify.js" ></script>
+    <script type="text/javascript" src="js/file-upload.js" ></script>
+    <script type="text/javascript" src="js/websocket.js" ></script>
+    <script type="text/javascript" src="js/cookies.js" ></script>
+    <script type="text/javascript" src="js/include-html.js" ></script>
+
+  </head>
+  <body>
+    <nav class="navbar bg-primary fg-primary custom-font0-2" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="assets/gaia-logo.png" >
+        </a>
+      </div>
+    </nav>
+    <section class="" style="margin-top: 50px; margin-bottom: 50px; height: calc(100hv);">
+
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+          <b>G</b>TFS <b>A</b>ccurate <b>I</b>nsight <b>A</b>nalyser, in short <b>G.A.I.A.</b>, is a tool intended to help all professionists working with <b>G</b>eneral <b>T</b>ransit <b>F</b>eed <b>S</b>pecification. Transportation Agencies, Delivery, Systems Integrators, Developers ... all of them can take an advantage from using <b>G.A.I.A.</b> !
+        </i></p>
+      </div>
+      
+      <div class="block block-cap-ext-l custom-font1-2 bg-primary">
+        <p><b>Why?</b></p>
+      </div>
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+        Looking around for both Free software or for Commercial products, there are a bunch of GTFS validators, so which is the need to have one more software? Well, the reason is a gap, not immediately visible, that in many circumstances create extra work, wasting time and money.
+        </i></p>
+      </div>
+
+      <div class="block block-cap-ext-r custom-font1-2 bg-primary">
+        <p><b>Then, what?</b></p>
+      </div>
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+          All applications that are GTFS based usually are also able to validate provided inputs in order to check all specific application constraints, and this is perfectly fine since external validators can only partially cover applications requirements and also is a good best practice, but what if inputs preparation is not in charge of developers, and then responsibility for such input is in charge to a different team or in charge to the final users? ... these circumstances are really common and in most of the cases applications access is restricted to specialized workers only, creating the needs to have continuous exchanges between who is in charge of producing "GTFS feeds" and who is in charge to validate those feeds with/for the target application.
+        </i></p>
+      </div>
+
+      <div class="block block-cap-ext-l custom-font1-2 bg-primary">
+        <p><b>What if ..?</b></p>
+      </div>
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+          Let's imagine to have something the middle, enough detailed to cover all specific application constraints and enough simple to be used from anyone, without the needs to have specific knowledge or preparation! Here we are ... this is where <b>G.A.I.A.</b> is coming to help!
+        </i></p>
+      </div>
+
+      <div class="block block-cap-ext-r custom-font1-2 bg-primary">
+        <p><b>How it works?</b></p>
+      </div>
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+          Starting from specification, will be easy for anyone of the stakeholders, usually developers or functional engineers, to prepare a configuration file that describe all application constraints, then such configuration file can be shared with developers as well as with other teams and with the customer if needed. Once we have a configuration file, it will be possible to detect all "anomalies" in the <b>GTFS feeds</b> using <b>G.A.I.A.</b> and then avoiding issues with the specific application. 
+In addiction to standards <b>GTFS files</b>, it is possible to handle also <b>extra CSV</b> files that may be required from the application, as well as to provide a default content if such files are missing. Moreover, leveraging <b>G.A.I.A.</b> configuration will be possible also to automatically fix different anomalies.
+        </i></p>
+      </div>
+
+      <div class="block block-cap-ext-l custom-font1-2 bg-primary">
+        <p><b>The service?</b></p>
+      </div>
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+          <b>G.A.I.A. web</b>, with its simple interface, will be available to everyone without the needs to provide email or any other kind of registration, since we want to make it accessible and usable to anyone involved with <b>GTFS</b> standard. <b>This kind of services will be sustained with donations.</b>
+        </i></p>
+      </div>
+
+      <div class="block block-cap-ext-r custom-font1-2 bg-primary">
+        <p><b>Get involved!</b></p>
+      </div>
+      <div class="block block-ext custom-font1-1">
+        <p><i>
+        There are many ways for contributing to projects run by <b>D.A.M.O.F.</b>, so if you have any request for functionalities to add, services you would like or that you need, suggestions on how to improve user experience as well as first person contribute, then please don't hesitate to contact us.
+        </i></p>
+      </div>
+
+    </section>
+
+    <!--   footer starts from here  -->
+    <footer class="footer bg-primary fg-primary custom-font0-2" style="height: 250px;">
+      <div class="container">
+        <div class="columns is-multiline">
+
+          <div class="column is-full">
+            <div class="column has-text-left">
+              <img src="assets/gaia-logo.png" width="150" >
+            </div>
+          </div>
+
+          <div class="column is-half">
+            <div w3-include-html="version.html"></div>
+          </div>
+          <div class="column is-half has-text-right">
+            <div class="columns">
+              <div class="column"></div>
+              <div class="column"></div>
+              <div class="column"></div>
+              <div class="column">
+                <a href="mailto:info@damof.org"><i class="fa-solid fa-envelope fa-2xl"></i></a>
+              </div>
+              <div class="column" style="align-items: right;">
+                <a href="https://damof.slack.com/"><i class="fa-brands fa-slack fa-2xl"></i></a>
+              </div>
+              <div class="column">
+                <a href="https://github.com/D-A-M-O-F"><i class="fa-brands fa-github fa-2xl"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-half has-text-left">
+            <p>Copyright <i class="fa-regular fa-copyright"></i> 2022 D.A.M.O.F.</p>
+          </div>
+          <div class="column is-half has-text-right">
+            <p><a href="https://github.com/D-A-M-O-F/gaia-web">Edit this Page on GitHub</a></p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+    <script>
+      includeHTML();
+    </script>
+  </body>
+</html>
+
