@@ -190,7 +190,7 @@ body {
   display: flexbox;
   margin-left: 0; 
   margin-right: auto;
-  width: 40%;  
+  width: 50%;  
 
   text-align: left;
   border-top-right-radius : 20px; 
@@ -202,7 +202,7 @@ body {
   display: flexbox;
   margin-left: auto; 
   margin-right: 0;
-  width: 40%;  
+  width: 50%;  
   
   text-align: right;
   border-top-left-radius : 20px; 
