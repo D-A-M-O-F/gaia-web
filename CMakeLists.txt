@@ -49,7 +49,9 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/submodules/tclap/CMakeLists.txt")
     message(FATAL_ERROR "The submodules/tclap were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
 endif()
 
+if (NOT TARGET tclap)
 add_subdirectory(submodules/tclap)
+endif()
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
