@@ -50,7 +50,7 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/submodules/tclap/CMakeLists.txt")
 endif()
 
 if (NOT TARGET TCLAP)
-add_subdirectory(submodules/tclap)
+    add_subdirectory(submodules/tclap)
 endif()
 
 include_directories(
