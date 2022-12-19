@@ -67,6 +67,7 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 # to add drogon 
 # add_subdirectory(drogon) 
 # target_link_libraries(${PROJECT_NAME} PRIVATE drogon)
+option(BUILD_SHARED_LIBS  OFF)
 add_subdirectory(submodules/drogon)
 target_link_libraries(${PROJECT_NAME} PRIVATE drogon)
 #
