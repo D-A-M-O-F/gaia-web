@@ -1,5 +1,6 @@
 
 var webSocket   = null;
+var connected   = false;
 var bytesTotal  = 0;
 var bytesCount  = 0;
 var waitingTime = 0;
@@ -45,6 +46,8 @@ function openWsConnection( protocol, hostname, port, endpoint ){
     webSocket = new WebSocket(webSocketURL);
 
     webSocket.onopen = function(openEvent) {
+        connected = true;
+
         console.log("WebSocket OPEN: " + JSON.stringify(openEvent, null, 4));
 
         document.getElementById("start-processing").disabled = true;
@@ -54,10 +57,17 @@ function openWsConnection( protocol, hostname, port, endpoint ){
     webSocket.onclose = function (closeEvent) {
         console.log("WebSocket CLOSE: " + JSON.stringify(closeEvent, null, 4));
 
-        document.getElementById("download-output").disabled = false;
-        document.getElementById('logStreamEnabled').disabled = false;
+        if (connected){
+          connected = false;
+          
+          document.getElementById("download-output").disabled = false;
+          document.getElementById('logStreamEnabled').disabled = false;
 
-        notifyInfo( "Operation completed!", true );
+          notifyInfo( "Operation completed!", true );
+        }
+        else {
+          notifyError( "Failed to connect! try again ...", true );
+        }
     };
 
     webSocket.onerror = function (errorEvent) {
