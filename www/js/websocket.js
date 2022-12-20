@@ -39,7 +39,11 @@ function ackBegin( live ){
 }
 
 function openWsConnection( protocol, hostname, port, endpoint ){
-  var webSocketURL = protocol + "://" + hostname + ":" + port + endpoint;
+  var webSocketURL = protocol + "://" + hostname;
+  if( port )
+    webSocketURL += ":" + port + endpoint;
+  else
+    webSocketURL += endpoint;
 
   console.log("openWSConnection::Connecting to: " + webSocketURL);
   try {
@@ -59,7 +63,7 @@ function openWsConnection( protocol, hostname, port, endpoint ){
 
         if (connected){
           connected = false;
-          
+
           document.getElementById("download-output").disabled = false;
           document.getElementById('logStreamEnabled').disabled = false;
 
