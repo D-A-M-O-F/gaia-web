@@ -40,10 +40,11 @@ function ackBegin( live ){
 
 function openWsConnection( protocol, hostname, port, endpoint ){
   var webSocketURL = protocol + "://" + hostname;
-  if( port )
+  if( port ){
     webSocketURL += ":" + port + endpoint;
-  else
+  } else {
     webSocketURL += endpoint;
+  }
 
   console.log("openWSConnection::Connecting to: " + webSocketURL);
   try {
