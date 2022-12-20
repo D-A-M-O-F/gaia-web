@@ -30,33 +30,38 @@ PROTOCOL
 
 void WebSocketLogger::handleNewConnection(const HttpRequestPtr &req, const WebSocketConnectionPtr& wsConnPtr)
 {
-  session_id_t idSession = req->session()->sessionId();
-  if ( idSession.empty() == true )
-  {
-    //@TODO
-    return;
-  }
+  std::async( 
+              std::launch::async,
+              [this,&req,&wsConnPtr](){
+                    session_id_t idSession = req->session()->sessionId();
+                    if ( idSession.empty() == true )
+                    {
+                      //@TODO
+                      return;
+                    }
 
-  if ( m_mapSessions.contains( idSession ) == true )
-  {
-    if ( wsConnPtr->hasContext() == true )
-    {
-      LOG_DEBUG << "A SESSION ALREADY PRESENT AND IN PROGRESS";
-      wsConnPtr->shutdown();
-      return;
-    }
+                    if ( m_mapSessions.contains( idSession ) == true )
+                    {
+                      if ( wsConnPtr->hasContext() == true )
+                      {
+                        LOG_DEBUG << "A SESSION ALREADY PRESENT AND IN PROGRESS";
+                        wsConnPtr->shutdown();
+                        return;
+                      }
 
-    HttpSessionEvents::clean_environment(idSession);
-  }
+                      HttpSessionEvents::clean_environment(idSession);
+                    }
 
-  m_mapSessions[idSession] = std::make_shared<session_status_t>();
+                    m_mapSessions[idSession] = std::make_shared<session_status_t>();
 
-  m_mapSessions[idSession]->session_id  = idSession;
-  m_mapSessions[idSession]->result      = std::async( processing, idSession );
+                    m_mapSessions[idSession]->session_id  = idSession;
+                    m_mapSessions[idSession]->result      = std::async( processing, idSession );
 
-  wsConnPtr->setContext( m_mapSessions[idSession] );
+                    wsConnPtr->setContext( m_mapSessions[idSession] );
 
-  send( wsConnPtr, "1.0", "begin", "ok", idSession ); 
+                    send( wsConnPtr, "1.0", "begin", "ok", idSession ); 
+                  }
+  );
 }
 
 
