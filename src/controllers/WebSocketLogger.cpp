@@ -59,7 +59,7 @@ void WebSocketLogger::handleNewConnection(const HttpRequestPtr &req, const WebSo
 
   wsConnPtr->setContext( m_mapSessions[idSession] );
 
-  std::this_thread::sleep_for(10ms);
+  std::this_thread::sleep_for(100ms);
   send( wsConnPtr, "1.0", "begin", "ok", idSession ); 
 }
 
