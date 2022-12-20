@@ -4,10 +4,7 @@
 #include <filesystem>
 #include <iostream>
 #include <unistd.h>
-#include <chrono>
 #include <thread>
-
-using namespace std::chrono_literals;
 
 /*
 PROTOCOL
@@ -59,7 +56,6 @@ void WebSocketLogger::handleNewConnection(const HttpRequestPtr &req, const WebSo
 
   wsConnPtr->setContext( m_mapSessions[idSession] );
 
-  std::this_thread::sleep_for(100ms);
   send( wsConnPtr, "1.0", "begin", "ok", idSession ); 
 }
 
