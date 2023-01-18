@@ -9,10 +9,9 @@ class gaia_cmd_output : public StdOutput {
 public:
     /***/
     virtual void version( [[maybe_unused]] CmdLineInterface &c) override {
-        cout << "G.A.I.A. utility version " << c.getVersion() << endl;
-        cout << "Copyright (C) 2022 Franceso Emanuele D'Agostino" << endl;
-        cout << "This software is NOT free. For license information" << endl;
-        cout << "please contact the owner at fedagostino@gmail.com ." << endl;
+        cout << "G.A.I.A. WEB version " << c.getVersion() << endl;
+        cout << "Copyright (C) 2022 D.A.M.O.F." << endl;
+        cout << "email: info@damof.org." << endl;
     }
 };
 
