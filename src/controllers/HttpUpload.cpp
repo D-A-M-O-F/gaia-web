@@ -1,4 +1,5 @@
 #include "HttpUpload.h"
+#include "GaiaWebStats.h"
 
 void HttpUpload::asyncHandleHttpRequest(const HttpRequestPtr& req, std::function<void (const HttpResponsePtr &)> &&callback)
 {
@@ -35,10 +36,16 @@ void HttpUpload::asyncHandleHttpRequest(const HttpRequestPtr& req, std::function
     if ( file.getFileExtension() == "cfg" )
     {
       file.saveAs( _session_root + "/cfg/gtfs.cfg" );
+
+      // Increase stats +1
+      GaiaWebStats::_cfg_uploads.fetch_add(1);
     }
     else if ( file.getFileExtension() == "zip" )
     {
       file.saveAs( _session_root + "/gtfs_in/input.zip" );
+
+      // Increase stats +1
+      GaiaWebStats::_zip_uploads.fetch_add(1);
     }
   }
   else

@@ -1,6 +1,8 @@
 #include "WebSocketLogger.h"
 #include "HttpSessionEvents.h"
 #include "GaiaWebOptions.h"
+#include "GaiaWebStats.h"
+
 #include <filesystem>
 #include <iostream>
 #include <unistd.h>
@@ -165,6 +167,9 @@ void WebSocketLogger::send( const WebSocketConnectionPtr& wsConnPtr,
 
 int WebSocketLogger::processing( const std::string& sessionid )
 {
+  // Increase stats +1
+  GaiaWebStats::_processing_requests.fetch_add(1);
+
   std::string command = GaiaWebOptions::getInstance().getGaiaHomePath() + GAIA_SCRIPTS +
                         "/processing.sh " + sessionid + " " +
                         GaiaWebOptions::getInstance().getGaiaHomePath() + GAIA_BIN + "/";
