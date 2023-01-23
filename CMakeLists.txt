@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(gaia-web
-        VERSION 0.5.0 
+        VERSION 0.5.1 
         LANGUAGES CXX C)
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h)
